@@ -62,10 +62,10 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/desingh-rajan/tanglish-tiptap.git"
+    "url": "git+https://github.com/piraisoodan-hq/tanglish-tiptap.git"
   },
   "bugs": {
-    "url": "https://github.com/desingh-rajan/tanglish-tiptap/issues"
+    "url": "https://github.com/piraisoodan-hq/tanglish-tiptap/issues"
   },
-  "homepage": "https://github.com/desingh-rajan/tanglish-tiptap#readme"
+  "homepage": "https://github.com/piraisoodan-hq/tanglish-tiptap#readme"
 }

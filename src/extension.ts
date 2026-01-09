@@ -118,41 +118,41 @@ export const Transliteration = Extension.create<TransliterationOptions>({
     return {
       setTransliteration:
         (enabled: boolean) =>
-          ({ editor: _editor }) => {
-            this.storage.enabled = enabled;
-            // Clear suggestions when disabling
-            if (!enabled && this.options.onSuggestionsUpdate) {
-              this.options.onSuggestionsUpdate([], null);
-            }
-            return true;
-          },
+        ({ editor: _editor }) => {
+          this.storage.enabled = enabled;
+          // Clear suggestions when disabling
+          if (!enabled && this.options.onSuggestionsUpdate) {
+            this.options.onSuggestionsUpdate([], null);
+          }
+          return true;
+        },
 
       toggleTransliteration:
         () =>
-          ({ commands }) => {
-            return commands.setTransliteration(!this.storage.enabled);
-          },
+        ({ commands }) => {
+          return commands.setTransliteration(!this.storage.enabled);
+        },
 
       transliterateSelection:
         () =>
-          ({ editor: _editor, state, dispatch }) => {
-            if (!this.storage.engine) return false;
+        ({ editor: _editor, state, dispatch }) => {
+          if (!this.storage.engine) return false;
 
-            const { from, to } = state.selection;
-            if (from === to) return false;
+          const { from, to } = state.selection;
+          if (from === to) return false;
 
-            const selectedText = state.doc.textBetween(from, to);
-            const transliterated = this.storage.engine.transliterate(selectedText);
+          const selectedText = state.doc.textBetween(from, to);
+          const transliterated = this.storage.engine.transliterate(selectedText);
 
-            if (transliterated === selectedText) return false;
+          if (transliterated === selectedText) return false;
 
-            if (dispatch) {
-              const tr = state.tr.replaceWith(from, to, state.schema.text(transliterated));
-              dispatch(tr);
-            }
+          if (dispatch) {
+            const tr = state.tr.replaceWith(from, to, state.schema.text(transliterated));
+            dispatch(tr);
+          }
 
-            return true;
-          },
+          return true;
+        },
     };
   },
 
@@ -244,7 +244,10 @@ export const Transliteration = Extension.create<TransliterationOptions>({
 
                 // Check if this word would generate suggestions (meaning popup is likely showing)
                 const suggestions = extension.storage.engine.getSuggestions(word, 1);
-                if (suggestions.length > 0 && word.length >= extension.options.minCharsForSuggestion) {
+                if (
+                  suggestions.length > 0 &&
+                  word.length >= extension.options.minCharsForSuggestion
+                ) {
                   // Suggestions are active - DON'T transliterate, let UI handle Enter
                   return false;
                 }
