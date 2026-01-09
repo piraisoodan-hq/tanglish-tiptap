@@ -1,7 +1,6 @@
 {
   "name": "@piraisoodan/tanglish-tiptap",
   "version": "0.1.0",
-  "private": true,
   "type": "module",
   "description": "TipTap extension for real-time transliteration using @piraisoodan/tanglish",
   "main": "./dist/index.js",
@@ -37,6 +36,7 @@
     "prosemirror"
   ],
   "peerDependencies": {
+    "@piraisoodan/tanglish": "^0.1.0",
     "@tiptap/core": "^2.0.0 || ^3.0.0",
     "@tiptap/pm": "^2.0.0 || ^3.0.0"
   },
@@ -46,7 +46,7 @@
     }
   },
   "devDependencies": {
-    "@piraisoodan/tanglish": "file:../tanglish",
+    "@piraisoodan/tanglish": "^0.1.0",
     "@tiptap/core": "^3.0.0",
     "@tiptap/pm": "^3.0.0",
     "@types/node": "^20.0.0",
@@ -60,7 +60,7 @@
     "typescript": "^5.0.0"
   },
   "author": "Piraisoodan Team",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/piraisoodan-hq/tanglish-tiptap.git"
