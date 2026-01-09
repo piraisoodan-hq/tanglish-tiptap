@@ -1,0 +1,71 @@
+{
+  "name": "@piraisoodan/tanglish-tiptap",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "TipTap extension for real-time transliteration using @piraisoodan/tanglish",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "bun build src/index.ts --outdir=dist --format esm --external @tiptap/core --external @tiptap/pm --external @piraisoodan/tanglish && bun x tsc --declaration --emitDeclarationOnly --outDir dist",
+    "dev": "bun build src/index.ts --outdir=dist --format esm --external @tiptap/core --external @tiptap/pm --external @piraisoodan/tanglish --watch",
+    "test": "bun test",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "prepublishOnly": "bun run lint && bun run build"
+  },
+  "keywords": [
+    "tiptap",
+    "tiptap-extension",
+    "transliteration",
+    "tamil",
+    "tanglish",
+    "prosemirror"
+  ],
+  "peerDependencies": {
+    "@tiptap/core": "^2.0.0 || ^3.0.0",
+    "@tiptap/pm": "^2.0.0 || ^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@piraisoodan/tanglish": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@piraisoodan/tanglish": "file:../tanglish",
+    "@tiptap/core": "^3.0.0",
+    "@tiptap/pm": "^3.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.52.0",
+    "@typescript-eslint/parser": "^8.52.0",
+    "bun-types": "latest",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "prettier": "^3.7.4",
+    "typescript": "^5.0.0"
+  },
+  "author": "Piraisoodan Team",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desingh-rajan/tanglish-tiptap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/desingh-rajan/tanglish-tiptap/issues"
+  },
+  "homepage": "https://github.com/desingh-rajan/tanglish-tiptap#readme"
+}
