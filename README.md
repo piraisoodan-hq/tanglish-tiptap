@@ -1,4 +1,7 @@
 # @piraisoodan/tanglish-tiptap
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![NPM](https://img.shields.io/npm/v/@piraisoodan/tanglish-tiptap.svg)
+![CI](https://github.com/piraisoodan-hq/tanglish-tiptap/actions/workflows/ci.yml/badge.svg)
 
 TipTap extension for real-time transliteration using
 [@piraisoodan/tanglish](https://github.com/piraisoodan-hq/tanglish).
