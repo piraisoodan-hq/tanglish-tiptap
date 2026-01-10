@@ -1,17 +1,19 @@
 # @piraisoodan/tanglish-tiptap
 
-TipTap extension for real-time transliteration using [@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish).
+TipTap extension for real-time transliteration using
+[@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish).
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+### License: MIT
 
 ## Features
 
-- ⌨️ **Real-time Transliteration**: Automatically converts romanized text on Space/Enter
-- 💡 **Suggestion Popup**: Shows matching Tamil words as you type
-- 🔄 **Toggle Support**: Enable/disable transliteration on the fly
-- ⚡ **Keyboard Shortcuts**: `Ctrl+Shift+T` to toggle
-- 🎯 **Selection Transliteration**: Convert selected text to Tamil
-- 🔌 **Framework Agnostic**: Works with any UI framework (React, Vue, Svelte, etc.)
+- **Real-time Transliteration**: Automatically converts romanized text on
+  Space/Enter
+- **Suggestion Popup**: Shows matching Tamil words as you type
+- **Toggle Support**: Enable/disable transliteration on the fly
+- **Keyboard Shortcuts**: `Ctrl+Shift+T` to toggle
+- **Selection Transliteration**: Convert selected text to Tamil
+- **Framework Agnostic**: Works with any UI framework (React, Vue, Svelte, etc.)
 
 ## Installation
 
@@ -29,25 +31,28 @@ yarn add @piraisoodan/tanglish @piraisoodan/tanglish-tiptap
 ## Quick Start
 
 ```typescript
-import { Editor } from '@tiptap/core';
-import StarterKit from '@tiptap/starter-kit';
-import { Transliteration } from '@piraisoodan/tanglish-tiptap';
+import { Editor } from "@tiptap/core";
+import StarterKit from "@tiptap/starter-kit";
+import { Transliteration } from "@piraisoodan/tanglish-tiptap";
 
 const editor = new Editor({
-  element: document.querySelector('#editor'),
+  element: document.querySelector("#editor"),
   extensions: [
     StarterKit,
     Transliteration.configure({
-      enabled: true
-    })
-  ]
+      enabled: true,
+    }),
+  ],
 });
 ```
 
 ## Usage with Suggestions Popup
 
 ```typescript
-import { Transliteration, type TanglishSuggestion } from '@piraisoodan/tanglish-tiptap';
+import {
+  type TanglishSuggestion,
+  Transliteration,
+} from "@piraisoodan/tanglish-tiptap";
 
 // Track suggestions state in your UI framework
 let suggestions: TanglishSuggestion[] = [];
@@ -64,23 +69,28 @@ const editor = new Editor({
         suggestions = newSuggestions;
         popupPosition = position;
         // Update your popup UI here
-      }
-    })
-  ]
+      },
+    }),
+  ],
 });
 ```
 
 ## React Example
 
 ```tsx
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import { Transliteration, type TanglishSuggestion } from '@piraisoodan/tanglish-tiptap';
-import { useState } from 'react';
+import { EditorContent, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import {
+  type TanglishSuggestion,
+  Transliteration,
+} from "@piraisoodan/tanglish-tiptap";
+import { useState } from "react";
 
 function TamilEditor() {
   const [suggestions, setSuggestions] = useState<TanglishSuggestion[]>([]);
-  const [position, setPosition] = useState<{ top: number; left: number } | null>(null);
+  const [position, setPosition] = useState<
+    { top: number; left: number } | null
+  >(null);
 
   const editor = useEditor({
     extensions: [
@@ -90,18 +100,23 @@ function TamilEditor() {
         onSuggestionsUpdate: (s, p) => {
           setSuggestions(s);
           setPosition(p);
-        }
-      })
-    ]
+        },
+      }),
+    ],
   });
 
   return (
     <div>
       <EditorContent editor={editor} />
       {suggestions.length > 0 && position && (
-        <div style={{ position: 'fixed', top: position.top, left: position.left }}>
+        <div
+          style={{ position: "fixed", top: position.top, left: position.left }}
+        >
           {suggestions.map((s, i) => (
-            <div key={i} onClick={() => selectSuggestion(s)}>
+            <div
+              key={i}
+              onClick={() => selectSuggestion(s)}
+            >
               {s.tanglish} → {s.tamil}
             </div>
           ))}
@@ -128,40 +143,40 @@ editor.commands.transliterateSelection();
 
 ## Keyboard Shortcuts
 
-| Shortcut | Action |
-|----------|--------|
+| Shortcut                       | Action                 |
+| ------------------------------ | ---------------------- |
 | `Ctrl+Shift+T` / `Cmd+Shift+T` | Toggle transliteration |
 
 ## Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `enabled` | `boolean` | `false` | Initial enabled state |
-| `language` | `LanguageConfig` | Tamil | Language configuration |
-| `triggerChars` | `string[]` | `[' ', 'Enter']` | Characters that trigger transliteration |
-| `onSuggestionsUpdate` | `function` | `undefined` | Callback for suggestion updates |
-| `minCharsForSuggestion` | `number` | `2` | Min chars before showing suggestions |
-| `maxSuggestions` | `number` | `8` | Max suggestions to show |
+| Option                  | Type             | Default          | Description                             |
+| ----------------------- | ---------------- | ---------------- | --------------------------------------- |
+| `enabled`               | `boolean`        | `false`          | Initial enabled state                   |
+| `language`              | `LanguageConfig` | Tamil            | Language configuration                  |
+| `triggerChars`          | `string[]`       | `[' ', 'Enter']` | Characters that trigger transliteration |
+| `onSuggestionsUpdate`   | `function`       | `undefined`      | Callback for suggestion updates         |
+| `minCharsForSuggestion` | `number`         | `2`              | Min chars before showing suggestions    |
+| `maxSuggestions`        | `number`         | `8`              | Max suggestions to show                 |
 
 ## Standalone Helper
 
 Use transliteration outside of TipTap:
 
 ```typescript
-import { createSuggestionHandler } from '@piraisoodan/tanglish-tiptap';
+import { createSuggestionHandler } from "@piraisoodan/tanglish-tiptap";
 
 const handler = createSuggestionHandler();
 
 // Get suggestions
-const suggestions = handler.getSuggestions('van', 5);
+const suggestions = handler.getSuggestions("van", 5);
 // [{ tanglish: 'vanakkam', tamil: 'வணக்கம்' }, ...]
 
 // Transliterate
-const tamil = handler.transliterate('nandri');
+const tamil = handler.transliterate("nandri");
 // நன்றி
 
 // Check for Tamil text
-handler.containsTargetScript('வணக்கம்'); // true
+handler.containsTargetScript("வணக்கம்"); // true
 ```
 
 ## Peer Dependencies
@@ -192,5 +207,7 @@ MIT © [Piraisoodan Team](https://github.com/desingh-rajan)
 
 ## Related Projects
 
-- [@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish) - Core transliteration engine
-- [piraisoodan](https://github.com/desingh-rajan/piraisoodan) - Tamil writing app
+- [@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish) - Core
+  transliteration engine
+- [piraisoodan](https://github.com/desingh-rajan/piraisoodan) - Tamil writing
+  app
