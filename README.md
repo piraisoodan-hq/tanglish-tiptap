@@ -1,7 +1,7 @@
 # @piraisoodan/tanglish-tiptap
 
 TipTap extension for real-time transliteration using
-[@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish).
+[@piraisoodan/tanglish](https://github.com/piraisoodan-hq/tanglish).
 
 ### License: MIT
 
@@ -75,7 +75,60 @@ const editor = new Editor({
 });
 ```
 
-## React Example
+## Svelte Example
+ 
+ ```svelte
+ <script lang="ts">
+   import { onMount, onDestroy } from 'svelte';
+   import { Editor } from '@tiptap/core';
+   import StarterKit from '@tiptap/starter-kit';
+   import {
+     Transliteration,
+     type TanglishSuggestion
+   } from '@piraisoodan/tanglish-tiptap';
+ 
+   let element: HTMLElement;
+   let editor: Editor;
+   let suggestions: TanglishSuggestion[] = [];
+   let popupPosition: { top: number; left: number } | null = null;
+ 
+   onMount(() => {
+     editor = new Editor({
+       element,
+       extensions: [
+         StarterKit,
+         Transliteration.configure({
+           enabled: true,
+           onSuggestionsUpdate: (s, p) => {
+             suggestions = s;
+             popupPosition = p;
+           },
+         }),
+       ],
+     });
+   });
+ 
+   onDestroy(() => {
+     if (editor) {
+       editor.destroy();
+     }
+   });
+ </script>
+ 
+ <div bind:this={element}></div>
+ 
+ {#if suggestions.length > 0 && popupPosition}
+   <div
+     style="position: fixed; top: {popupPosition.top}px; left: {popupPosition.left}px;"
+   >
+     {#each suggestions as s}
+       <div>{s.tanglish} → {s.tamil}</div>
+     {/each}
+   </div>
+ {/if}
+ ```
+ 
+ ## React Example
 
 ```tsx
 import { EditorContent, useEditor } from "@tiptap/react";
@@ -191,7 +244,7 @@ This package requires:
 
 ```bash
 # Clone
-git clone https://github.com/desingh-rajan/tanglish-tiptap.git
+git clone https://github.com/piraisoodan-hq/tanglish-tiptap.git
 cd tanglish-tiptap
 
 # Install dependencies
@@ -203,11 +256,12 @@ bun run build
 
 ## License
 
-MIT © [Piraisoodan Team](https://github.com/desingh-rajan)
+MIT © [Piraisoodan Team](https://github.com/piraisoodan-hq)
 
 ## Related Projects
 
-- [@piraisoodan/tanglish](https://github.com/desingh-rajan/tanglish) - Core
-  transliteration engine
-- [piraisoodan](https://github.com/desingh-rajan/piraisoodan) - Tamil writing
+- [@piraisoodan/tanglish](https://github.com/piraisoodan-hq/tanglish) - Core
+   transliteration engine
+- [piraisoodan](https://github.com/piraisoodan-hq/piraisoodan) - Tamil writing
   app
+
