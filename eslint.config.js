@@ -8,7 +8,7 @@ export default [
   eslint.configs.recommended,
   prettierConfig,
   {
-    files: ['src/**/*.ts'],
+    files: ['src/**/*.ts', 'test/**/*.ts'],
     languageOptions: {
       parser: tsparser,
       parserOptions: {
@@ -18,6 +18,13 @@ export default [
       globals: {
         console: 'readonly',
         process: 'readonly',
+        window: 'readonly',
+        document: 'readonly',
+        global: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        Element: 'readonly',
+        FrameRequestCallback: 'readonly',
       },
     },
     plugins: {

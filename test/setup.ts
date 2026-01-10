@@ -30,9 +30,9 @@ if (!global.cancelAnimationFrame) {
 }
 
 // Polyfill getComputedStyle for ProseMirror - attach to global and window
-const getComputedStylePolyfill = (element: Element) => {
+const getComputedStylePolyfill = (_element: Element) => {
   return {
-    getPropertyValue: (prop: string) => {
+    getPropertyValue: (_prop: string) => {
       return '';
     },
     position: 'static',

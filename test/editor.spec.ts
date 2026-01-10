@@ -9,7 +9,7 @@ describe('Transliteration Editor Integration', () => {
   let suggestionsUpdateMock: any;
 
   beforeEach(() => {
-    suggestionsUpdateMock = mock((suggestions: any, position: any) => {
+    suggestionsUpdateMock = mock((_suggestions: any, _position: any) => {
       // Mock callback
     });
 
