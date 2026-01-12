@@ -5,7 +5,7 @@
     "": {
       "name": "@piraisoodan/tanglish-tiptap",
       "devDependencies": {
-        "@piraisoodan/tanglish": "^0.1.1",
+        "@piraisoodan/tanglish": "^0.1.2",
         "@tiptap/core": "^3.0.0",
         "@tiptap/pm": "^3.0.0",
         "@tiptap/starter-kit": "^3.15.3",
@@ -21,7 +21,7 @@
         "typescript": "^5.0.0",
       },
       "peerDependencies": {
-        "@piraisoodan/tanglish": "^0.1.1",
+        "@piraisoodan/tanglish": "^0.1.2",
         "@tiptap/core": "^2.0.0 || ^3.0.0",
         "@tiptap/pm": "^2.0.0 || ^3.0.0",
       },
@@ -54,7 +54,7 @@
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.3", "", {}, "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ=="],
 
-    "@piraisoodan/tanglish": ["@piraisoodan/tanglish@0.1.1", "", {}, "sha512-3327nOuHvWmDzaRd7KZ8GOwVQgYI2SwocDl2uSV2PzCjKvSy2EwF0odeQEtd6XWpmStlfn9E6XSEB2nQZlXCAQ=="],
+    "@piraisoodan/tanglish": ["@piraisoodan/tanglish@0.1.2", "", {}, "sha512-G29Rews8GLlxWYNdJi64PUQWd67IUKkRjVL9EsyAXRK4a8pwYVE+fptN9ll03+dys4KnUkMEhRG1stYKjFnsTw=="],
 
     "@pkgr/core": ["@pkgr/core@0.2.9", "", {}, "sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA=="],
 
